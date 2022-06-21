@@ -1,0 +1,64 @@
+@import "../abstracts/mixins";
+@import "../abstracts/variables";
+
+.s-footer {
+  background-color: #F9F9F9;
+  padding-top: 39px;
+  @media (max-width: $breakpoint-md) {
+    padding-top: 35px;
+  }
+  &__logo {
+    object-fit: contain;
+
+    &-box {
+      width: 196px;
+      height: 87px;
+      margin: 0 auto 26px auto;
+      @media (max-width: $breakpoint-md) {
+        margin-bottom: 17px;
+      }
+    }
+  }
+
+  & .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 36px;
+
+    &-item {
+      margin: 0 24px;
+      @media (max-width: $breakpoint-sm) {
+        margin: 0 10px;
+      }
+      @media (max-width: $breakpoint-md) {
+        margin: 0 16px;
+      }
+      & a {
+        font-weight: 500;
+        font-size: 16px;
+        @include fontSize(14,16);
+        line-height: 1.625;
+        color: #333333;
+        @include transition(.3);
+        &:hover {
+          color: $accentColor;
+        }
+      }
+    }
+  }
+
+  &__copyright {
+    padding: 26px 0 23px 0;
+    border-top: 1px solid rgba(51, 51, 51, 0.2);
+    @media (max-width: $breakpoint-md) {
+      padding-bottom: 23px;
+    }
+    &-text{
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      color: #939393;
+    }
+  }
+}

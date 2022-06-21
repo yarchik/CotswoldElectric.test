@@ -1,0 +1,282 @@
+@import "../abstracts/mixins";
+@import "../abstracts/variables";
+
+body, html {
+  height: 100%;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body .hide-scrollbar, html .hide-scrollbar {
+  scrollbar-width: none
+}
+
+body .hide-scrollbar::-webkit-scrollbar, html .hide-scrollbar::-webkit-scrollbar {
+  display: none
+}
+
+
+img::selection {
+  background-color: transparent;
+}
+
+.default-icon {
+  width: 100%;
+
+  & img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.--relative {
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.overlap {
+  position: relative;
+  z-index: 3;
+}
+
+body {
+  &.overflow-hidden {
+    padding-left: calc(100vw - 100%);
+    overflow: hidden;
+
+  }
+}
+
+
+.full-height, body, html {
+  height: 100%;
+}
+
+.body-padding {
+  height: 194px;
+  @media (max-width: $breakpoint-md) {
+    height: 52px;
+  }
+}
+
+.section {
+  overflow: hidden;
+  position: relative;
+
+  padding-top: 195px;
+  @media (max-width: $breakpoint-md) {
+    padding-top: 100px;
+  }
+
+  &-heading {
+    font-weight: 600;
+    @include fontSize(28, 58);
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: $whiteColor;
+
+    &.--black {
+      color: #333333;
+    }
+
+    & span {
+      color: $accentColor;
+    }
+
+    &__sub {
+      font-weight: 700;
+      @include fontSize(14, 16);
+      line-height: 1.2;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #BBBBBB;
+      margin-bottom: 10px;
+    }
+
+    &.__line {
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 55px;
+        height: 6px;
+        left: 0;
+        bottom: -7px;
+        background: $accentColor;
+        border-radius: 12px;
+      }
+    }
+  }
+
+  &-text {
+    font-weight: 400;
+    @include fontSize(14, 18);
+    line-height: 170%;
+    color: #626262;
+    position: relative;
+
+    & span {
+      color: $accentColor;
+    }
+  }
+
+  &-inner {
+    position: relative;
+    padding: 0 0 102px 0;
+    overflow: hidden;
+  }
+
+}
+
+
+.main {
+  overflow: hidden;
+
+  &-wrapper {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+  }
+}
+
+.swiper {
+  &-pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    &-bullet {
+      width: 6px;
+      height: 6px;
+      background-color: $whiteColor;
+      opacity: 1!important;
+      margin: 0 15px !important;
+      position: relative;
+      @include transition(.3);
+
+      &:after {
+        content: '';
+        width: 27px;
+        height: 27px;
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        border: 1px solid transparent;
+        border-radius: 100%;
+        transform: translate(-50%, -50%);
+        @include transition(.3);
+      }
+
+      &:hover {
+        background-color: $accentColor;
+      }
+
+      &-active {
+        background-color: $accentColor;
+
+        &:after {
+          border-color: rgba(0, 150, 64, 0.7);
+        }
+
+      }
+    }
+  }
+
+  &-button {
+    width: 45.32px;
+    height: 45.32px;
+    border-radius: 100%;
+    z-index: 2;
+
+    &:after {
+      content: '';
+      display: none;
+    }
+
+    & i {
+      font-size: 13px;
+      color: $whiteColor;
+    }
+  }
+
+  &-button-next, &-button-prev {
+    width: 45.32px;
+    height: 45.32px;
+    border-radius: 100%;
+    background-color: #E8E8E8;
+    @include transition(.3);
+
+    & i {
+      font-size: 15px;
+      color: $whiteColor;
+    }
+
+    &:after {
+      display: none;
+    }
+
+    &:hover {
+      background-color: $accentColor;
+    }
+  }
+}
+
+.lg-backdrop {
+  background-color: rgba(33, 36, 44, 0.95);
+}
+
+.lg-outer .lg-thumb-item.active, .lg-outer .lg-thumb-item:hover {
+  border-color: $accentColor;
+}
+
+.lightgallery__snip {
+  position: relative;
+  @include transition(.4);
+
+  & i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    font-size: 36px;
+    color: $whiteColor;
+    width: 36px;
+    height: 36px;
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    @include transition(.4);
+  }
+
+  &:hover {
+    @include transition(.4);
+
+    & img {
+      opacity: 0.3;
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+    }
+
+    & i {
+      opacity: 1;
+      @include transition(.4);
+    }
+  }
+}

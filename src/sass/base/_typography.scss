@@ -1,0 +1,49 @@
+@import "../abstracts/mixins";
+@import "../abstracts/variables";
+
+.text {
+  &-right {
+    text-align: right;
+  }
+
+  &-center {
+    text-align: center;
+  }
+
+  &-left {
+    text-align: left;
+  }
+  &-m {
+    font-weight: 500;
+    @include fontSize(14,16);
+    line-height: 1.6;
+    color: #CFCFCF;
+  }
+}
+
+
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Montserrat', sans-serif;
+}
+.icon-ar-left:before {
+  content: "\e905";
+}
+.icon-ar-right:before {
+  content: "\e906";
+}
+.icon-chat:before {
+  content: "\e900";
+}
+.icon-check:before {
+  content: "\e901";
+}
+.icon-message:before {
+  content: "\e902";
+}
+.icon-phone:before {
+  content: "\e903";
+}
+.icon-zoom:before {
+  content: "\e904";
+}

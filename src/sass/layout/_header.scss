@@ -1,0 +1,309 @@
+@import "../abstracts/mixins";
+@import "../abstracts/variables";
+
+
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  visibility: visible;
+  opacity: 1;
+  background-color: $whiteColor;
+  padding-top: 8px;
+  padding-bottom: 20px;
+  box-shadow: 0px 4px 4px rgba(213, 213, 213, 0.25);
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  @media (max-width: $breakpoint-md) {
+
+    padding: 10px 16px;
+  }
+
+  &.scrollUp {
+    @media (min-width: $breakpoint-md) {
+      transform: translateY(-200px);
+    }
+  }
+
+
+  &-main {
+    padding: 18px 0 32px 0;
+    @media (max-width: $breakpoint-md) {
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+    }
+  }
+
+  &-container {
+    display: flex;
+    width: 100%;
+    z-index: 1;
+    @media (min-width: $breakpoint-md) {
+      align-items: center;
+      position: relative;
+    }
+    @media (max-width: $breakpoint-md) {
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+
+    &-box {
+      display: block;
+      width: 194px;
+      height: 87px;
+      @media (max-width: $breakpoint-md) {
+        width: 112px;
+        height: 50px;
+      }
+    }
+  }
+
+  & .navbar {
+
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .main-navigation {
+
+      @media (max-width: $breakpoint-md) {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+
+    .menu {
+      @media (min-width: $breakpoint-md) {
+        height: 100%;
+      }
+      @media (max-width: $breakpoint-md) {
+        padding: 34px 7px 46px 7px;
+        text-align: center;
+      }
+
+      &-item {
+        display: inline-block;
+        position: relative;
+        height: 100%;
+        @media (max-width: $breakpoint-md) {
+          padding: 0;
+          display: block;
+          height: auto;
+        }
+
+        & a {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 150%;
+          color: #3E3E3E;
+          transition: color ease-out .3s;
+
+          @media (min-width: $breakpoint-md) {
+            &:after {
+              content: "";
+              position: absolute;
+              left: 50%;
+              transform: translateX(-50%);
+              bottom: -5px;
+              width: 0;
+              height: 5px;
+
+
+              background-color: #2F76EA;
+              border-radius: 5px;
+              z-index: 1;
+              transition: width ease-out .3s;
+            }
+
+          }
+          @media (max-width: $breakpoint-md) {
+            &:before {
+              content: "";
+              background-color: $whiteColor;
+              position: absolute;
+              top: -10px;
+              left: -10px;
+              width: calc(100% + 20px);
+              height: calc(100% + 20px);
+              z-index: 1;
+            }
+            &:after {
+              content: "";
+              background-color: $whiteColor;
+              position: absolute;
+              left: 0;
+              bottom: -1px;
+              width: 0;
+              height: 1px;
+              z-index: 1;
+              transition: width ease-out .3s;
+            }
+          }
+
+
+        }
+
+        &:not(&:last-child) {
+          @media (min-width: $breakpoint-md) {
+            margin-right: 36px;
+          }
+          @media (max-width: $breakpoint-md) {
+            margin-bottom: 30px;
+          }
+        }
+
+
+        &:first-child {
+          & a:before {
+            transition: all 1s ease;
+          }
+        }
+
+        &:nth-child(2) a:before {
+          transition: all 2s ease;
+        }
+
+
+        &:nth-child(3) a:before {
+          transition: all 3s ease;
+        }
+
+        &:nth-child(4) a:before {
+          transition: all 4s ease;
+
+        }
+
+        &:nth-child(5) a:before {
+
+          transition: all 5s ease;
+
+        }
+
+        &:nth-child(6) a:before {
+          transition: all 6s ease
+        }
+
+        &:nth-child(7) a:before {
+          transition: all 7s ease
+        }
+
+        &:nth-child(8) a:before {
+          transition: all 8s ease
+        }
+
+
+        &:hover, &.current-menu-item {
+          & a {
+            color: $accentColor;
+            @media (min-width: $breakpoint-md) {
+              &:after {
+                content: "";
+                width: 12px;
+              }
+            }
+            @media (max-width: $breakpoint-md) {
+
+              &:after {
+                content: "";
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: $breakpoint-md) {
+
+      height: calc(100vh - 55px);
+      background-color: $whiteColor;
+      position: fixed;
+      top: 55px;
+      transition: all 1.2s ease;
+      z-index: 2;
+      width: 100%;
+      right: -100%;
+      padding: 0 16px 65px 16px;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+
+      &.is-visible {
+        right: 0;
+        transition: all .5s ease;
+
+        & .menu-item {
+          a:before {
+            height: 0;
+          }
+        }
+
+        & .location, & .languages-navigation {
+          opacity: 1;
+          transition: all 2.5s ease;
+        }
+      }
+    }
+  }
+
+
+  .header {
+    &-contacts {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      grid-gap: 10px;
+
+      &__icon {
+        font-size: 20px;
+        color: #009640;
+      }
+
+      &__title {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: -0.4px;
+        color: #333333;
+
+      }
+    }
+
+    &-phone {
+      &__title {
+        font-weight: 600;
+        @include fontSize(14,22);
+        line-height: 24px;
+
+        & span {
+          color: $accentColor;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+
+}

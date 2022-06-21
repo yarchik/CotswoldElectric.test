@@ -1,0 +1,97 @@
+@import "../abstracts/mixins";
+@import "../abstracts/variables";
+
+.btn {
+  position: relative;
+  box-shadow: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  padding: 13.5px 45px 13.5px 45px;
+  font-weight: 600;
+  font-size: 16px;
+  @include fontSize(14, 16);
+  line-height: 24px;
+  border: 1px solid $accentColor;
+  border-radius: 3px;
+  @include transition(.4);
+
+  &:focus {
+    outline: none;
+  }
+
+  &-primary {
+    letter-spacing: -0.4px;
+    color: $whiteColor;
+
+    overflow: hidden;
+
+    min-width: 186px;
+    background-color: $accentColor;
+
+    overflow: hidden;
+    @include transition(.3);
+    @media (max-width: $breakpoint-lg) {
+      padding: 9px 31px 10px 31px;
+    }
+
+    &:hover {
+      background: transparent;
+      color: $accentColor;
+    }
+  }
+
+}
+
+
+.btn-pulse {
+  background: $accentColor;
+  box-shadow: 0px 4px 11px rgba(0, 150, 64, 0.5);
+  border-radius: 44px;
+  width: 74px;
+  height: 76px;
+  -webkit-animation: zoom 1.5s infinite;
+  @media (max-width: $breakpoint-lg) {
+    display: none;
+  }
+
+  &__wrap {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 92px;
+    height: 94px;
+    margin: 0 auto;
+    z-index: 1;
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
+    background: 0 0
+  }
+
+  & i {
+    font-size: 26px;
+    color: $whiteColor;
+  }
+}
+
+.pulse-button:hover {
+  -webkit-animation: none
+}
+
+@-webkit-keyframes zoom {
+  0% {
+    // transform: scale(.9)
+  }
+
+  70% {
+    //transform: scale(1);
+    box-shadow: 0 0 0 50px rgba(245, 211, 0, 0)
+  }
+
+  100% {
+    //transform: scale(.9);
+    box-shadow: 0 0 0 0 rgba(245, 211, 0, 0)
+  }
+}
+
